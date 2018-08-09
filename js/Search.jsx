@@ -16,8 +16,11 @@ const Search = () => (
         { /* if a spread operator is used (...object) to pass data to props then it should be referenced like such: 
         {props.title} 
         providing a key here is important to maintain order in the mapping process 
-        key should be unique here */ }
-        {preload.shows.map(show => <ShowCard key={show.imdbID} {...show} />)}
+        key should be unique here 
+        It is very common to forget this div tag below when applying styles to components */ }
+        <div>
+            {preload.shows.map(show => <ShowCard key={show.imdbID} {...show} />)}
+        </div>
     </div>
 );
 
