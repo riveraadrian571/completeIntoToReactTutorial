@@ -1,29 +1,24 @@
-import React from 'react'
-import { render } from 'react-dom'
+import React from 'react';
+import { render } from 'react-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Landing from './Landing';
+import Search from './Search';
 
-const ce = React.createElement;
+const FourOhFour = () => <h1> 404 error </h1>;
 
-const myTitle = function(props) {
-  return ce(
-    'div',
-    null,
-    ce('h1', { style: { color: props.color } }, props.title)
-    // this could work as well, it will just not apply the h1 style
-    // React.createElement('anyDiv', null, 'my second componenet')
-  );
-};
+// switch enables react app to render one component at at time and never render 2
 
-const myFirstComponent = function() {
-  // second arguement can be null or the below, which can been in the console
-  return ce(
-    'div',
-    { id: 'my-First-Component' },
-    // can be an array of components as well
-    ce(myTitle, { title: 'fav1', color: 'YellowGreen' }),
-    ce(myTitle, { title: 'fav2', color: 'GreenYellow' }),
-    ce(myTitle, { title: 'fav3', color: 'LimeGreen' }),
-    ce(myTitle, { title: 'fav4', color: 'peru' })
-  );
-};
+const App = () => (
+  <BrowserRouter>
+    <div className="app" >
+      <Switch>
+        <Route exact path="/" component={Landing} />
+        <Route path="/search" component={Search} />
+        {/* */}
+        <Route component={FourOhFour} />
+      </Switch>
+    </div>
+  </BrowserRouter>
+)
 
-render(ce(myFirstComponent), document.getElementById('app'));
+render(<App />, document.getElementById('app'));
