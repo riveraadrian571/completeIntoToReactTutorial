@@ -8,7 +8,7 @@ module.exports = {
     'webpack-dev-server/client?http://localhost:8080',
     'webpack/hot/only-dev-server',
     "./js/ClientApp.jsx",
-  ]
+  ],
   devtool: "cheap-eval-source-map",
   output: {
     path: path.join(__dirname, 'public'),

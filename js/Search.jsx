@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react';
 import preload from '../data.json';
 import ShowCard from './ShowCard';
@@ -8,15 +10,16 @@ all classes that extend to component must have render method and must return mar
 use setState with a method that handles an event rather than doing it directly (this.state.inputValue='dsadsa')
 */
 class Search extends Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         searchTerm: "Initial Value"
-    //     };
-    //     // this only gets called once and because its used in the right context will always do changes appropriately
-    //     this.handleChange = this.handleChange.bind(this);
-    // }
-
+    /*
+    constructor(props) {
+        super(props);
+    this.state = {
+            searchTerm: "Initial Value"
+        };
+        // this only gets called once and because its used in the right context will always do changes appropriately
+        this.handleChange = this.handleChange.bind(this);
+    }
+    */
     // this different way of initializing state is not standard yet
     state = {
         searchTerm: ''
@@ -24,9 +27,9 @@ class Search extends Component {
     // this different way of handing input change using arrow functions is not standard yet as well
     // never will it create a new context but us the same one to handle input
     // if you have one parameter then the parenthesis is optional, prettier will take them off
-    handleChange = event => {
+    handleSearchTermChange = (event: SyntheticKeyboardEvent & { target: HTMLInputElement }) => {
         this.setState({ searchTerm: event.target.value });
-    }
+    };
     render() {
         return (
             <div className='search'>
@@ -35,7 +38,7 @@ class Search extends Component {
                     <input
                         // onChange={this.handleChange.bind(this) this is bad practice because it calls in a new function and
                         // since the render method can be called so many times, it can ruin performance } 
-                        onChange={this.handleChange}
+                        onChange={this.handleSearchTermChange}
                         value={this.state.searchTerm}
                         type="text"
                         placeholder="Search"

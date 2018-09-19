@@ -1,5 +1,6 @@
+// @flow
+
 import React from 'react';
-import { string } from 'prop-types';
 import styled from 'styled-components';
 
 /* if props is passed in using an actual object rather than the spread operator (...object) then this is how it
@@ -50,7 +51,7 @@ const Image = styled.img`
 /*
 if props is displayed using spread operator (...object) then this is how it should be outputted
 */
-const ShowCard = props => (
+const ShowCard = (props: { poster: string, title: string, year: string, description: string }) => (
     <Wrapper>
         <Image alt={`${props.title} Show Poster`} src={`/public/img/posters/${props.poster}`} />
         <div>
@@ -60,12 +61,5 @@ const ShowCard = props => (
         </div>
     </Wrapper>
 );
-
-ShowCard.propTypes = {
-    poster: string.isRequired,
-    title: string.isRequired,
-    year: string.isRequired,
-    description: string.isRequired
-};
 
 export default ShowCard;
