@@ -3,6 +3,7 @@
 import React, { Component } from 'react';
 import preload from '../data.json';
 import ShowCard from './ShowCard';
+import Header from './Header';
 
 /*
 props are immutable objects
@@ -22,6 +23,7 @@ class Search extends Component {
     state = {
         searchTerm: ''
     };
+    // if possible never used any as a type for array, bad practice
     props: {
         shows: Array<Show>
     };
@@ -34,17 +36,11 @@ class Search extends Component {
     render() {
         return (
             <div className='search'>
-                <header>
-                    <h1> svideo </h1>
-                    <input
-                        // onChange={this.handleChange.bind(this) this is bad practice because it calls in a new function and
-                        // since the render method can be called so many times, it can ruin performance } 
-                        onChange={this.handleSearchTermChange}
-                        value={this.state.searchTerm}
-                        type="text"
-                        placeholder="Search"
-                    />
-                </header>
+                <Header
+                    searchTerm={this.state.searchTerm}
+                     
+                    handleSearchTermChange={this.handleSearchTermChange}
+                />
                 { /* <pre><code>{JSON.stringify(preload, null, 4)}</code></pre> */}
                 { /* map function will take an array of objects and convert to array of little react components,
                 also extracts a property title from each object of the array */ }
