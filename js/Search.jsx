@@ -28,9 +28,9 @@ class Search extends Component {
     // this different way of handing input change using arrow functions is not standard yet as well
     // never will it create a new context but us the same one to handle input
     // if you have one parameter then the parenthesis is optional, prettier will take them off
-    handleChange = event => {
+    handleSearchTermChange = (event: SyntheticKeyboardEvent & { target: HTMLInputElement }) => {
         this.setState({ searchTerm: event.target.value });
-    }
+    };
     render() {
         return (
             <div className='search'>
@@ -39,7 +39,7 @@ class Search extends Component {
                     <input
                         // onChange={this.handleChange.bind(this) this is bad practice because it calls in a new function and
                         // since the render method can be called so many times, it can ruin performance } 
-                        onChange={this.handleChange}
+                        onChange={this.handleSearchTermChange}
                         value={this.state.searchTerm}
                         type="text"
                         placeholder="Search"
