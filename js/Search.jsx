@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react';
 import preload from '../data.json';
 import ShowCard from './ShowCard';
@@ -16,11 +18,13 @@ class Search extends Component {
     //     // this only gets called once and because its used in the right context will always do changes appropriately
     //     this.handleChange = this.handleChange.bind(this);
     // }
-
     // this different way of initializing state is not standard yet
     state = {
         searchTerm: ''
-    }
+    };
+    props: {
+        shows: Array<Show>
+    };
     // this different way of handing input change using arrow functions is not standard yet as well
     // never will it create a new context but us the same one to handle input
     // if you have one parameter then the parenthesis is optional, prettier will take them off
