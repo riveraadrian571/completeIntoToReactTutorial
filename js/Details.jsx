@@ -29,7 +29,6 @@ class Details extends Component {
     render() {
         // assigns all the const to corresponding values in props.show object
         const { title, description, year, poster, trailer } = this.props.show;
-        console.log('trailer ', trailer);
         let ratingComponent;
         if (this.state.apiData.rating) {
             ratingComponent = <h3>{this.state.apiData.rating}</h3>;
